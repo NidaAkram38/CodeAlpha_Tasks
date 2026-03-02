@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cinematic Image Gallery</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Image Gallery</h1>
+
+<div class="buttons">
+    <button onclick="filterImages('all')">All</button>
+    <button onclick="filterImages('nature')">Nature</button>
+    <button onclick="filterImages('animals')">Animals</button>
+    <button onclick="filterImages('landscape')">Landscape</button>
+</div>
+
+<div class="gallery">
+    <!-- Nature Images -->
+    <img src="https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg" class="nature" onclick="openLightbox(2)">
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" class="nature" onclick="openLightbox(3)">
+    <img src="https://picsum.photos/id/1016/800/500" class="nature landscape" onclick="openLightbox(1)">
+    <img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg" class="nature" onclick="openLightbox(9)">
+
+    <!-- Animals Images -->
+    <img src="https://picsum.photos/id/1024/800/500" class="animals" onclick="openLightbox(1)">
+    <img src="https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg" class="animals" onclick="openLightbox(7)">
+    <img src="https://picsum.photos/id/1025/600/400" class="animals" onclick="openLightbox(1)">
+    <img src="https://picsum.photos/id/1069/600/400" class="animals" onclick="openLightbox(4)">
+
+    <!-- Landscape Images -->
+    <img src="https://picsum.photos/id/1065/800/500" class="landscape" onclick="openLightbox(12)">
+    <img src="https://images.pexels.com/photos/355465/pexels-photo-355465.jpeg" class="landscape" onclick="openLightbox(13)">
+    <img src="https://images.pexels.com/photos/532387/pexels-photo-532387.jpeg" class="landscape" onclick="openLightbox(14)">
+    <img src="https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg" class="nature landscape>
+    <img src="https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg" class="nature landscape" onclick="openLightbox(15)">
+    <img src="https://images.pexels.com/photos/46298/pexels-photo-46298.jpeg" class="landscape" onclick="openLightbox(8)">
+</div>
+
+<div class="lightbox" id="lightbox">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img">
+    <div class="controls">
+        <button onclick="prevImage()">Prev</button>
+        <button onclick="nextImage()">Next</button>
+    </div>
+</div>
+
+<script>
+let images = document.querySelectorAll(".gallery img");
+let currentIndex = 0;
+
+function openLightbox(index){
+    currentIndex = index;
+    document.getElementById("lightbox").style.display="flex";
+    document.getElementById("lightbox-img").src = images[index].src;
+}
+
+function closeLightbox(){
+    document.getElementById("lightbox").style.display="none";
+}
+
+function nextImage(){
+    currentIndex = (currentIndex + 1) % images.length;
+    document.getElementById("lightbox-img").src = images[currentIndex].src;
+}
+
+function prevImage(){
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    document.getElementById("lightbox-img").src = images[currentIndex].src;
+}
+
+function filterImages(category){
+    images.forEach(img=>{
+        if(category === "all" || img.classList.contains(category)){
+            img.style.display="block";
+        } else {
+            img.style.display="none";
+        }
+    });
+}
+</script>
+
+</body>
+</html>

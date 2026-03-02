@@ -1,0 +1,111 @@
+/* Background Gradient & Fonts */
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin:0;
+    background: linear-gradient(135deg, #89f7fe, #66a6ff);
+    color:#fff;
+}
+
+h1{
+    text-align:center;
+    padding:30px 0;
+    font-size:2.5rem;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+}
+
+/* Buttons */
+.buttons{
+    text-align:center;
+    margin-bottom:30px;
+}
+.buttons button{
+    padding:12px 20px;
+    margin:6px;
+    border:none;
+    background: rgba(255,255,255,0.8);
+    color:#333;
+    font-weight:600;
+    border-radius:8px;
+    cursor:pointer;
+    transition: all 0.3s ease;
+}
+.buttons button:hover{
+    background:#ffb347;
+    color:#fff;
+    transform: scale(1.1);
+}
+
+/* Gallery Grid */
+.gallery{
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:0 20px 50px 20px;
+}
+.gallery img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    border-radius:15px;
+    box-shadow:0 10px 20px rgba(0,0,0,0.3);
+    cursor:pointer;
+    transition: all 0.4s ease;
+}
+.gallery img:hover{
+    transform: scale(1.08);
+    filter: brightness(85%) saturate(120%);
+    box-shadow:0 15px 30px rgba(0,0,0,0.5);
+}
+
+/* Lightbox */
+.lightbox{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.9);
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    z-index:1000;
+}
+.lightbox img{
+    max-width:85%;
+    max-height:75%;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(255,255,255,0.2);
+}
+.close{
+    position:absolute;
+    top:25px;
+    right:35px;
+    font-size:35px;
+    color:white;
+    cursor:pointer;
+}
+.controls{
+    margin-top:20px;
+}
+.controls button{
+    padding:12px 22px;
+    margin:0 15px;
+    border:none;
+    background:#ffb347;
+    color:white;
+    font-weight:600;
+    border-radius:8px;
+    cursor:pointer;
+    transition: all 0.3s ease;
+}
+.controls button:hover{
+    background:#ff8008;
+}
+
+/* Responsive */
+@media(max-width:600px){
+    .gallery img{
+        height:180px;
+    }
+}
